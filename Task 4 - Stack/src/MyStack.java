@@ -3,8 +3,8 @@ public class MyStack<E> {
     private int size;
 
     private static class Node<E> {
-        private Node<E> next;
-        private E value;
+        private final Node<E> next;
+        private final E value;
 
         public Node(Node<E> next, E value) {
             this.next = next;
@@ -13,18 +13,16 @@ public class MyStack<E> {
     }
 
     public void push(E value) {
-        first = new Node<E>(first, value);
+        first = new Node<>(first, value);
         size++;
     }
 
-    public E remove(int index) {
-        Node<E> temp = first;
+    public void remove(int index) {
         if (index == 0) {
             --size;
         }
         first = first.next;
         size--;
-        return temp.value;
     }
 
     public void clear() {
